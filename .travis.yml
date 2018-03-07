@@ -15,7 +15,7 @@ jobs:
 
   - os: linux
     # Latest Node 8 LTS
-    node_js: 8.10
+    node_js: 8.9
 
   - os: linux
     # Latest Node version without NAPI
