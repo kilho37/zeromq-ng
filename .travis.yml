@@ -26,7 +26,7 @@ jobs:
 
   - os: osx
     # Latest Node 8 LTS
-    node_js: 8.10
+    node_js: 8.9
     osx_image: xcode9.3beta
 
   - os: osx
