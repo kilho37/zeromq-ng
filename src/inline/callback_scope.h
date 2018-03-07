@@ -1,8 +1,12 @@
 /* Copyright (c) 2017-2018 Rolf Timmermans */
 #pragma once
 
-#include "node_api.h"
-#include "node_api_types.h"
+#include "node_version.h"
+
+#if (NODE_MAJOR_VERSION < 9) || (NODE_MAJOR_VERSION == 9 && NODE_MINOR_VERSION < 6)
+/* Implementation of new NAPI callback scope, which landed in Node 9.6. */
+#include "napi_callback_scope.h"
+#endif
 
 #define NAPI_THROW_IF_FAILED(env, status, ...)                                           \
     if ((status) != napi_ok) {                                                           \
