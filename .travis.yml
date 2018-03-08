@@ -18,80 +18,80 @@ jobs:
     env: ALPINE_CHROOT=true
     sudo: required
 
-  - os: osx
-    node_js: 9.7
-    osx_image: xcode9.3beta
-
-  - os: osx
-    node_js: 8.8
-    osx_image: xcode9.3beta
-
-  # Test shared libraries on Linux and macOS.
-  - os: linux
-    node_js: 9.7
-    env: ZMQ_SHARED=true
-    addons: {apt: {packages: libzmq3-dev}}
-
-  - os: osx
-    node_js: 9.7
-    osx_image: xcode9.3beta
-    env: ZMQ_SHARED=true
-
-  # Test older version branches of ZMQ.
-  - os: linux
-    node_js: 9.7
-    # Previous stable version on 4.2 branch.
-    env: ZMQ_VERSION=4.2.2
-
-  - os: linux
-    node_js: 9.7
-    # Latest stable version on 4.1 branch.
-    env: ZMQ_VERSION=4.1.6
-  - os: linux
-    node_js: 9.7
-    # Version of libzmq3 on Ubuntu Trusty.
-    env: ZMQ_VERSION=4.0.4
-
-  # Publish all binaries for Linux and macOS.
-  - stage: publish binaries
-    node_js: 9.7
-    script: script/ci/release.sh
-    os: linux
-
-  - stage: publish binaries
-    node_js: 9.7
-    script: script/ci/release.sh
-    os: osx
-    osx_image: xcode9.3beta
-
-  # Publish cross-compiled binaries for arm & arm64.
-  - stage: publish binaries
-    node_js: 9.7
-    os: linux
-    env: ARCH=arm TRIPLE=arm-linux-gnueabihf GCC=4.8
-    install: script/ci/cross-install.sh
-    script: script/ci/cross-release.sh
-    addons: {apt: {packages: [gcc-4.8-arm-linux-gnueabihf, g++-4.8-arm-linux-gnueabihf]}}
-
-  - stage: publish binaries
-    node_js: 9.7
-    os: linux
-    env: ARCH=arm64 TRIPLE=aarch64-linux-gnu GCC=4.8
-    install: script/ci/cross-install.sh
-    script: script/ci/cross-release.sh
-    addons: {apt: {packages: [gcc-4.8-aarch64-linux-gnu, g++-4.8-aarch64-linux-gnu]}}
-
-  # Publish package to NPM.
-  - stage: publish package
-    script: skip
-    os: linux
-    deploy:
-      provider: npm
-      email: r.w.timmermans@gmail.com
-      api_key:
-        secure: rg8GpeS20asj3JcgmfQpumBc1JV44hliyCIW3Y+rN/5gaurkm87K8MGVsNTVwwsdWyBFGjfGEYUhXF+H9q/OMLRchHqkfW6y7jzbWQx5QP5srbf7J8uWGIytKzJbX6yt41kHzk+FKFU2XAzrIP+51tvZiqBdpkkKCA/KdKG779mH04uphxcuaGtiEtqGhXdNe494r4ux727hvATRJwnGO6JvDzD6aM92i5SZdM/xKIPt+1KNRX92TIWj/op5XkpwvkPZjAERdOiHB052GM0mgaMxZiJdO0Xb5FeTh/1SXZXYE+XPIY4Sm3Pa75Kk3UFt5nI4DKFhl6V8UwOPAHiIFBZJPe/avOxPejHzwLxO3nBWEboiuc0OWds16x1NJsSLGk3CtDcFl6Zkanh8EFmyy7LMUuR1MEjY6+azQgTibVB2ynqN1MKYkxl/aDJB0xYtabDgaptiM5ITaMNUR7pUG4VRQkvi6L5TfMdzI8/mwxkjMnnVnFef8OGw5i0SRJMpEXeohrgCjkUN+uxpo+FIzPDf/tano35wgh/LYDbXNMfdEgd1L9MkOIS32vN46HbAbjrhSNIxK2u8PsOB07hPjmiFkoGRzrgg0veJ194FZ0k8LEJtqmDMCCMBaFiO1TuTHDNyGzAsR17Upk7/qZKeH/EPDhvbycH4hWvvri29yrI=
-      on:
-        tags: true
+  # - os: osx
+  #   node_js: 9.7
+  #   osx_image: xcode9.3beta
+  #
+  # - os: osx
+  #   node_js: 8.8
+  #   osx_image: xcode9.3beta
+  #
+  # # Test shared libraries on Linux and macOS.
+  # - os: linux
+  #   node_js: 9.7
+  #   env: ZMQ_SHARED=true
+  #   addons: {apt: {packages: libzmq3-dev}}
+  #
+  # - os: osx
+  #   node_js: 9.7
+  #   osx_image: xcode9.3beta
+  #   env: ZMQ_SHARED=true
+  #
+  # # Test older version branches of ZMQ.
+  # - os: linux
+  #   node_js: 9.7
+  #   # Previous stable version on 4.2 branch.
+  #   env: ZMQ_VERSION=4.2.2
+  #
+  # - os: linux
+  #   node_js: 9.7
+  #   # Latest stable version on 4.1 branch.
+  #   env: ZMQ_VERSION=4.1.6
+  # - os: linux
+  #   node_js: 9.7
+  #   # Version of libzmq3 on Ubuntu Trusty.
+  #   env: ZMQ_VERSION=4.0.4
+  #
+  # # Publish all binaries for Linux and macOS.
+  # - stage: publish binaries
+  #   node_js: 9.7
+  #   script: script/ci/release.sh
+  #   os: linux
+  #
+  # - stage: publish binaries
+  #   node_js: 9.7
+  #   script: script/ci/release.sh
+  #   os: osx
+  #   osx_image: xcode9.3beta
+  #
+  # # Publish cross-compiled binaries for arm & arm64.
+  # - stage: publish binaries
+  #   node_js: 9.7
+  #   os: linux
+  #   env: ARCH=arm TRIPLE=arm-linux-gnueabihf GCC=4.8
+  #   install: script/ci/cross-install.sh
+  #   script: script/ci/cross-release.sh
+  #   addons: {apt: {packages: [gcc-4.8-arm-linux-gnueabihf, g++-4.8-arm-linux-gnueabihf]}}
+  #
+  # - stage: publish binaries
+  #   node_js: 9.7
+  #   os: linux
+  #   env: ARCH=arm64 TRIPLE=aarch64-linux-gnu GCC=4.8
+  #   install: script/ci/cross-install.sh
+  #   script: script/ci/cross-release.sh
+  #   addons: {apt: {packages: [gcc-4.8-aarch64-linux-gnu, g++-4.8-aarch64-linux-gnu]}}
+  #
+  # # Publish package to NPM.
+  # - stage: publish package
+  #   script: skip
+  #   os: linux
+  #   deploy:
+  #     provider: npm
+  #     email: r.w.timmermans@gmail.com
+  #     api_key:
+  #       secure: rg8GpeS20asj3JcgmfQpumBc1JV44hliyCIW3Y+rN/5gaurkm87K8MGVsNTVwwsdWyBFGjfGEYUhXF+H9q/OMLRchHqkfW6y7jzbWQx5QP5srbf7J8uWGIytKzJbX6yt41kHzk+FKFU2XAzrIP+51tvZiqBdpkkKCA/KdKG779mH04uphxcuaGtiEtqGhXdNe494r4ux727hvATRJwnGO6JvDzD6aM92i5SZdM/xKIPt+1KNRX92TIWj/op5XkpwvkPZjAERdOiHB052GM0mgaMxZiJdO0Xb5FeTh/1SXZXYE+XPIY4Sm3Pa75Kk3UFt5nI4DKFhl6V8UwOPAHiIFBZJPe/avOxPejHzwLxO3nBWEboiuc0OWds16x1NJsSLGk3CtDcFl6Zkanh8EFmyy7LMUuR1MEjY6+azQgTibVB2ynqN1MKYkxl/aDJB0xYtabDgaptiM5ITaMNUR7pUG4VRQkvi6L5TfMdzI8/mwxkjMnnVnFef8OGw5i0SRJMpEXeohrgCjkUN+uxpo+FIzPDf/tano35wgh/LYDbXNMfdEgd1L9MkOIS32vN46HbAbjrhSNIxK2u8PsOB07hPjmiFkoGRzrgg0veJ194FZ0k8LEJtqmDMCCMBaFiO1TuTHDNyGzAsR17Upk7/qZKeH/EPDhvbycH4hWvvri29yrI=
+  #     on:
+  #       tags: true
 
 stages:
 - name: test
