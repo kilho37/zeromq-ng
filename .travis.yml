@@ -14,49 +14,16 @@ jobs:
   - os: linux
 
   - os: linux
-    # Latest Node 8 LTS
-    node_js: 8.9
-
-  - os: linux
-    # Latest Node version without NAPI
     node_js: 8.8
 
   - os: linux
-    node_js: 8.7
-
-  - os: linux
-    node_js: 8.6
-
-  - os: linux
-    # Latest Node version without NAPI
-    node_js: 8.5
-
-  - os: linux
-    node_js: 8.4
-
-  - os: linux
-    node_js: 8.3
-
-  - os: linux
-    node_js: 8.2
-
-  - os: linux
-    node_js: 8.1
-
-  - os: linux
-    node_js: 8.0
+    env: ALPINE_CHROOT=true
 
   - os: osx
     osx_image: xcode9.3beta
 
   - os: osx
-    # Latest Node 8 LTS
-    node_js: 8.9
-    osx_image: xcode9.3beta
-
-  - os: osx
-    # Latest Node version without NAPI
-    node_js: 8.5
+    node_js: 8.8
     osx_image: xcode9.3beta
 
   # Test shared libraries on Linux and macOS.
@@ -124,4 +91,4 @@ install:
 - travis_retry script/ci/install.sh
 
 script:
-- travis_retry yarn test
+- travis_retry script/ci/test.sh
