@@ -119,7 +119,8 @@ inline napi_status napi_close_callback_scope(napi_env env, napi_callback_scope s
     CHECK_ENV(env);
     CHECK_ARG(env, scope);
     if (env->open_callback_scopes == 0) {
-        return napi_status(napi_handle_scope_mismatch + 1);
+        // napi_handle_scope_mismatch
+        return napi_status(14);
     }
 
     env->open_callback_scopes--;
