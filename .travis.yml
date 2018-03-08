@@ -19,7 +19,32 @@ jobs:
 
   - os: linux
     # Latest Node version without NAPI
+    node_js: 8.8
+
+  - os: linux
+    node_js: 8.7
+
+  - os: linux
+    node_js: 8.6
+
+  - os: linux
+    # Latest Node version without NAPI
     node_js: 8.5
+
+  - os: linux
+    node_js: 8.4
+
+  - os: linux
+    node_js: 8.3
+
+  - os: linux
+    node_js: 8.2
+
+  - os: linux
+    node_js: 8.1
+
+  - os: linux
+    node_js: 8.0
 
   - os: osx
     osx_image: xcode9.3beta
