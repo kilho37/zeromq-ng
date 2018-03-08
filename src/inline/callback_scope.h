@@ -3,8 +3,10 @@
 
 #include "node_version.h"
 
-#if (NODE_MAJOR_VERSION < 9) || (NODE_MAJOR_VERSION == 9 && NODE_MINOR_VERSION < 6)
-/* Implementation of new NAPI callback scope, which landed in Node 9.6. */
+#if NODE_MODULE_VERSION < 60
+/* Implementation of new NAPI callback scope, which landed in Node 9.6,
+   which had NODE_MODULE_VERSION 59. Any newer Node.js that have a higher
+   NODE_MODULE_VERSION can use the native implementation. */
 #include "napi_callback_scope.h"
 #endif
 
