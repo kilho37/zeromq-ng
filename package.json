@@ -36,7 +36,7 @@
     "weak": ">= 1.0"
   },
   "engines": {
-    "node": ">= 8"
+    "node": ">= 8.8"
   },
   "scripts": {
     "install": "node-pre-gyp install --fallback-to-build",
