@@ -18,7 +18,7 @@ fi
 echo "Installing dependencies..."
 
 if [ -n "${ALPINE_CHROOT}" ]; then
-  sudo alpine-chroot-install.sh -b v3.7 -p 'nodejs yarn zeromq-dev build-base python2' -k 'CI TRAVIS_.* ZMQ_.*'
+  sudo ./alpine-chroot-install.sh -b v3.7 -p 'nodejs yarn zeromq-dev build-base python2' -k 'CI TRAVIS_.* ZMQ_.*'
 fi
 
 if [ -n "${ZMQ_SHARED}" ]; then
