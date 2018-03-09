@@ -23,7 +23,7 @@
     "node-pre-gyp"
   ],
   "devDependencies": {
-    "@types/node": ">= 8.0",
+    "@types/node": ">=9.4.7",
     "benchmark": ">= 0",
     "chai": ">= 4.1",
     "choma": "rolftimmermans/choma",
