@@ -41,7 +41,7 @@
     "node": ">= 8.8"
   },
   "scripts": {
-    "install": "node-pre-gyp install --fallback-to-build",
+    "install": "node-pre-gyp configure",
     "test": "node-pre-gyp build && eslint lib && script/format.sh && mocha && tsc --project test/unit",
     "bench": "node-pre-gyp build && node --use_strict --harmony_async_iteration --expose-gc test/bench"
   },
