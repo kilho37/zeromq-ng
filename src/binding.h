@@ -13,6 +13,10 @@
 
 #include <iostream>
 
+/* Required to avoid error with fortify-headers:
+   "error: inlining failed in call to always_inline 'vsnprintf': function body not available" */
+#include <stdio.h>
+
 #include "inline/arguments.h"
 #include "inline/error.h"
 #include "inline/util.h"
