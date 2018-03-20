@@ -15,7 +15,7 @@
     "remote_path": "v{version}",
     "package_name": "{module_name}-{version}-{platform}-{arch}-{libc}-napi-v{napi_build_version}.tar.gz",
     "host": "https://github.com/rolftimmermans/zeromq-ng/releases/download/",
-    "napi_versions": [1]
+    "napi_versions": [1, 2]
   },
   "dependencies": {
     "node-addon-api": "^1.2",
